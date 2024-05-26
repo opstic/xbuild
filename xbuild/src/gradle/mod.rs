@@ -157,7 +157,13 @@ pub fn build(env: &BuildEnv, out: &Path) -> Result<()> {
 
     let opt = env.target().opt();
     let format = env.target().format();
-    let mut cmd = Command::new("gradle");
+    let mut cmd = if cfg!(target_os = "windows") {
+        let mut cmd = Command::new("cmd");
+        cmd.args(["/c", "gradle"]);
+        cmd
+    } else {
+        Command::new("gradle")
+    };
     cmd.current_dir(&gradle);
     cmd.arg(match format {
         Format::Aab => "bundle",
