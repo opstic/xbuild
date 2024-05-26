@@ -72,6 +72,8 @@ pub struct Application {
     pub has_code: Option<bool>,
     #[serde(rename(serialize = "android:icon"))]
     pub icon: Option<String>,
+    #[serde(rename(serialize = "android:isGame"))]
+    pub is_game: Option<bool>,
     #[serde(rename(serialize = "android:label"))]
     pub label: Option<String>,
     #[serde(rename(serialize = "android:appComponentFactory"))]
