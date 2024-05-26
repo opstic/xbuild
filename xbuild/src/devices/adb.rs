@@ -211,6 +211,8 @@ impl Adb {
             .arg("pm")
             .arg("list")
             .arg("package")
+            .arg("--user")
+            .arg("0")
             .arg("-U")
             .arg(id)
             .output()?;
